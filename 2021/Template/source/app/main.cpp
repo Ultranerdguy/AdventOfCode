@@ -3,11 +3,16 @@
 
 // Project specific files
 #include "include.h"
+#include "config.h"
 
-extern int g_test;
-int main()
+int main(int argc, char* argv[])
 {
-  std::cout << "Hello world!\n";
-  std::cout << g_test << '\n';
-  foo();
+  if (argc < 2)
+  {
+    std::cout << "Usage: \n";
+    std::cout << "  " << EXECUTABLE << " <input file> [<output file>]";
+    return 1;
+  }
+  for (int i=0;i<argc;++i) std::cout << argv[i] << '\n';
+  std::cout << EXECUTABLE << '\n';
 }
