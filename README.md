@@ -1,4 +1,4 @@
-## Advent of Code ##
+# Advent of Code #
 
 The [Advent of Code](https://adventofcode.com) is a yearly programming challenge. Every day during the month of December, a new programming problem is released, totalling 25 unique problems.
 
