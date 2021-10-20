@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
   if (argc < 2)
   {
     std::cout << "Usage: \n";
-    std::cout << "  " << EXECUTABLE << " <input file> [<output file>]";
+    std::cout << "  " << EXECUTABLE << " <input file>";
     return 1;
   }
   std::ifstream input(argv[1]);

@@ -1,1 +1,6 @@
+#ifndef _AOC_CONFIG_H_
+#define _AOC_CONFIG_H_
+
 static constexpr char EXECUTABLE[] = "@PROJECT_NAME@";
+
+#endif
