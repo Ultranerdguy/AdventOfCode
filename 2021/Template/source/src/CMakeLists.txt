@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.13)
 
 set(AoC_Current_Library "${PROJECT_NAME}_Library")
 add_library(${AoC_Current_Library} lib.cpp)
