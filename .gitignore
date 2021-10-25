@@ -1,3 +1,9 @@
+# Originally built with .vscode
+.vscode/
+
+# Build and binary folders
 build/
 bin/
-.vscode/
+
+# My problem inputs. Ignored since my inputs are probably different to yours.
+input.txt
