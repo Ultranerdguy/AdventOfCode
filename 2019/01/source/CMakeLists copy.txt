@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.13)
+project(AoC${AOC_YEAR}_${AOC_DAY})
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+
+include_directories(include)
+add_subdirectory(app)
+add_subdirectory(src)
+add_subdirectory(cmake)
