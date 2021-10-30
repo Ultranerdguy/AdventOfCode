@@ -5,5 +5,14 @@
 build/
 bin/
 
+# CMake files
+*.cmake
+CMakeFiles/
+config.h
+
+## Visual Studio files
+*.vcxproj*
+*.sln
+
 # My problem inputs. Ignored since my inputs are probably different to yours.
 input.txt
