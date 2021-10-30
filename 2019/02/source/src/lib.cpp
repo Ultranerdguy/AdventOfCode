@@ -1,12 +1,12 @@
 #include "include.h"
 
-OPCODE ParseOpcode(OPCODE* pOpcode, size_t len)
+OPCODE ParseOpcode(OPCODE* pOpcode, std::size_t len)
 {
-  for (size_t i=0; i<len && ParseInstruction(pOpcode, i); i += 4){}
+  for (std::size_t i=0; i<len && ParseInstruction(pOpcode, i); i += 4){}
   return pOpcode[0];
 }
 
-bool ParseInstruction(OPCODE* pOpcode, size_t pos)
+bool ParseInstruction(OPCODE* pOpcode, std::size_t pos)
 {
   switch (pOpcode[pos])
   {
