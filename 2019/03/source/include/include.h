@@ -19,6 +19,8 @@ inline constexpr Point operator-(const Point& lhs, const Point& rhs);
 inline constexpr Point operator-(const Point& pnt);
 inline constexpr Point operator*(const int lhs, const Point& rhs);
 inline constexpr Point operator*(const Point& lhs, const int rhs);
+inline constexpr bool operator==(const Point& lhs, const Point& rhs);
+inline constexpr bool operator!=(const Point& lhs, const Point& rhs);
 
 class WireManager
 {
@@ -27,8 +29,8 @@ public:
 
   std::vector<Point> GetIntersections(std::size_t wire1, std::size_t wire2);
   std::vector<Point> GetIntersections(const Point& A1, const Point& A2, const Point& B1, const Point& B2);
-  Point GetClosestPoint(const std::vector<Point>& points);
-
+  std::vector<Point>& GetWire(std::size_t wire);
+  
 protected:
   std::vector<std::vector<Point>> m_wires;
 };
@@ -74,6 +76,16 @@ constexpr Point operator*(const int lhs, const Point& rhs)
 constexpr Point operator*(const Point& lhs, const int rhs)
 {
   return rhs * lhs;
+}
+
+constexpr bool operator==(const Point& lhs, const Point& rhs)
+{
+  return lhs.x == rhs.x && lhs.y == rhs.y;
+}
+
+constexpr bool operator!=(const Point& lhs, const Point& rhs)
+{
+  return !(lhs == rhs);
 }
 
 #endif

@@ -49,30 +49,89 @@ std::vector<Point> WireManager::GetIntersections(const Point& A1, const Point& A
     {
       // Intersection success
       Point delta = A2 - A1;
-      delta.x = std::round(S*delta.x);
-      delta.y = std::round(S*delta.y);
+      delta.x = static_cast<int>(std::round(S*delta.x));
+      delta.y = static_cast<int>(std::round(S*delta.y));
       output.push_back(A1 + delta);
     }
   }
   else
   {
+    Point const* pA = nullptr;
+    Point const* pB = nullptr;
     // Lines parallel, check for overlap
     auto B = B2 - B1;
     auto A = A2 - A1;
     // Is A1 on B
     auto B1A1 = A1 - B1;
-    if (B1A1.x*B.y == B1A1.y*B.x && 0 <= B1A1.x && B1A1.x < B.x) output.push_back(A1);
+    if (B1A1.x*B.y == B1A1.y*B.x && 0 <= B1A1.x && B1A1.x < B.x) 
+    {
+      pA = &A1;
+    }
     auto B1A2 = A2 - B1;
-    if (B1A2.x*B.y == B1A2.y*B.x && 0 <= B1A2.x && B1A2.x < B.x) output.push_back(A2);
+    if (B1A2.x*B.y == B1A2.y*B.x && 0 <= B1A2.x && B1A2.x < B.x)
+    {
+      if (pA)
+      {
+        if (!pB)
+        {
+          pB = &A2;
+        }
+      }
+      else
+      {
+        pA = &A2;
+      }
+    }
     auto A1B1 = B1 - A1;
-    if (A1B1.x*A.y == A1B1.y*A.x && 0 <= A1B1.x && A1B1.x < A.x) output.push_back(B1);
+    if (A1B1.x*A.y == A1B1.y*A.x && 0 <= A1B1.x && A1B1.x < A.x)
+    {
+      if (pA)
+      {
+        if (!pB)
+        {
+          pB = &B1;
+        }
+      }
+      else
+      {
+        pA = &B1;
+      }
+    }
     auto A1B2 = B2 - A1;
-    if (A1B2.x*A.y == A1B2.y*A.x && 0 <= A1B2.x && A1B2.x < A.x) output.push_back(B2);
+    if (A1B2.x*A.y == A1B2.y*A.x && 0 <= A1B2.x && A1B2.x < A.x)
+    {
+      if (pA)
+      {
+        if (!pB)
+        {
+          pB = &B2;
+        }
+      }
+      else
+      {
+        pA = &B2;
+      }
+    }
+    if (pA) output.push_back(*pA);
+    if (pB) output.push_back(*pB);
+    if (pA && pB)
+    {
+      Point dir = *pB - *pA;
+      // Remove signs to step one at a time;
+      dir.x = dir.x / abs(dir.x);
+      dir.y = dir.y / abs(dir.y);
+      Point pos = *pA + dir;
+      while (pos != *pB)
+      {
+        output.push_back(pos);
+        pos = pos + dir;
+      }
+    }
   }
   return output;
-
 }
-Point WireManager::GetClosestPoint(const std::vector<Point>& points)
+
+std::vector<Point>& WireManager::GetWire(std::size_t wire)
 {
-  return Point(0,0);
+  return m_wires[wire];
 }

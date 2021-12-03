@@ -23,9 +23,10 @@ int main(int argc, char* argv[])
   WireManager wires;
   std::string line;
   size_t lineCount = 0;
-  while ((std::getline(input, line),!line.empty()))
+  while (std::getline(input, line) && !line.empty())
   {
-    Point currentPosition;
+    Point currentPosition(0,0);
+    wires.AddWirePoint(lineCount, currentPosition);
     std::stringstream lineStream(line);
     while (lineStream)
     {
@@ -55,6 +56,18 @@ int main(int argc, char* argv[])
       lineStream.get();
     }
     ++lineCount;
+  }
+
+  for (std::size_t i = 0; i < 2; ++i)
+  {
+    auto wire = wires.GetWire(i);
+    const auto size = wire.size();
+    for (std::size_t j = 1; j < size; ++j)
+    {
+      auto diff = wire[j] - wire[j - 1];
+      std::cout << diff.x << " " << diff.y << ", ";
+    }
+    std::cout << '\n';
   }
 
   auto intersections = wires.GetIntersections(0,1);

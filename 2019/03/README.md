@@ -113,7 +113,7 @@ CAxCDy = CAyCDx = UCDxCDy
 ```
 And a successful hit happens when `0 <= U <= 1`, or `0 <= CAx <= CDx` with the collision happening at `A`.
 
-We repeat this process for each endpoint, and we'll have found all possible collisions between 2 wires.
+We repeat this process for each endpoint, remove duplicates, then add all the points between them, and we'll have found all possible collisions between 2 wires.
 
 Now to repeat this process for all the wires. Oh, and we still need to actually read them in from file.
 
