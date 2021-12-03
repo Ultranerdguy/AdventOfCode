@@ -1,4 +1,4 @@
-## [Day 0](www.example.com) ##
+## [Day 3](https://adventofcode.com/2021/day/3) ##
 
 > A quote of the problem overview
 > with example data
