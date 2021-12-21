@@ -24,9 +24,6 @@ add_subdirectory(15)
 add_subdirectory(16)
 add_subdirectory(17)
 add_subdirectory(18)
-<<<<<<< HEAD
+add_subdirectory(19)
 add_subdirectory(20)
 add_subdirectory(21)
-=======
-add_subdirectory(19)
->>>>>>> 6616615 (2021_19 Began day 19)
