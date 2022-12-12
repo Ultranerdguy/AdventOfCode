@@ -10,9 +10,10 @@ bin/
 CMakeFiles/
 config.h
 
-## Visual Studio files
+## Visual Studio files and folders
 *.vcxproj*
 *.sln
+.vs/
 
 # My problem inputs. Ignored since my inputs are probably different to yours.
 input.txt
